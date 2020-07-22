@@ -1,0 +1,40 @@
+meter websocket a funcionar com a api
+console.log('------------------------------------------------------------------------');
+
+// keys in new fresh Obj
+let keysNew = Object.keys(bodyNew)
+second_item_new = bodyNew[keysNew[1]];
+let keysTwoNew = Object.keys(second_item_new)
+
+// keys in Database DB Obj
+let keysDB = Object.keys(bodyDB)
+second_item_db = bodyDB[keysDB[1]];
+let keysTwoDB = Object.keys(second_item_db)
+
+// use a sorting algorithm to get the different keys from database to new fresh data.
+let a = []; let diff = [];
+
+for (let i = 0; i < keysTwoNew.length; i++) {
+  a[keysTwoNew[i]] = true;
+}
+
+for (let i = 0; i < keysTwoDB.length; i++) {
+          if (a[keysTwoDB[i]]) {
+            delete a[keysTwoDB[i]];
+        } else {
+            a[keysTwoDB[i]] = true;
+        }
+}
+
+//copy the database array
+let newFreshDatabaseObj = bodyDB;
+
+let keysFreshDatabaseObj = Object.keys(newFreshDatabaseObj)
+new_keys_fresh_database_obj = newFreshDatabaseObj[keysFreshDatabaseObj[1]];
+
+// push the different keys + the values of those keys to newFreshDatabaseObj
+    for (var k in a) {
+      new_keys_fresh_database_obj[k] = second_item_new[k]
+    }
+
+console.log(newFreshDatabaseObj)

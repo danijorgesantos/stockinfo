@@ -1,0 +1,56 @@
+<div class="margin-navbar">
+</div>
+
+<app-loading *ngIf="loading"></app-loading>
+
+
+<div *ngIf="!loading">
+    <div class="page-margin">
+        <div class="ag-grid-center">
+            <div class="up-text-data">
+                <p>We are using an algorithm to get data from the Alpha Vantage Stock API and save it continuously on a
+                    database. The time frame is 5 min. and the results get updated every 2 hours.</p>
+                <br>
+                <br>
+                <div class="date-container">
+                    <div class="info-container">
+                        <p class="info-title">Todays date</p>
+                        <br>
+                        <p>{{currentDate}}</p>
+                    </div>
+                    <div class="info-container">
+                        <p class="info-title">Run for the first time on</p>
+                        <br>
+                        <p> May 22nd 2020, 6:35:18 pm</p>
+                    </div>
+                    <div class="info-container">
+                        <p class="info-title">Run for the last time on:</p>
+                        <br>
+                        <p>{{currentDate}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <p>You can download these results for free to do your own algorithms for deep learning or machine
+                    learning <span class="info-title" href="https://datawebsite.herokuapp.com/alpha/bodyDB" target="_blank">here.</span></p>
+                <br>
+                <br>
+                <p>The results can be seen in the table bellow</p>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div class="ag-grid-center">
+        <ag-grid-angular style="width: 1000px; height: 600px;"
+                         class="ag-theme-alpine"
+                         [rowData]="rowData"
+                         [columnDefs]="columnDefs">
+        </ag-grid-angular>
+    </div>
+</div>
+
+
+
+<div class="margin-navbar">
+</div>
